@@ -18,7 +18,7 @@ function Upload() {
               <h1 className="font-bold ">Upload a Video</h1>
               <h3 className="text-gray-400">Post a video to your account</h3>
             </div>
-            <div className="border-2 border-dashed w-9/12 rounded-md ml-8 h-4/6 flex flex-col justify-between items-center">
+            <div className="border-2 hover:border-red-600 border-dashed w-9/12 rounded-md ml-8 h-4/6 flex flex-col justify-between items-center">
               <FontAwesomeIcon
                 className="text-red-600 mt-6"
                 icon={faCloudUploadAlt}
