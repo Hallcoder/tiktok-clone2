@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import Post from './post';
 const Posts = () => {
     return ( 
-        <div className='flex flex-col w-8/12 '>
+        <div className='flex flex-col h-2/6 w-8/12 '>
         <Post />
         <Post />
         <Post />

@@ -9,12 +9,21 @@ class NavBar extends Component {
     state = {  } 
     render() { 
         return (
+<<<<<<< HEAD
           <div className="flex flex-row justify-around bg-white shadow-md sticky top-0 items-center w-full mx-auto ">
                   <div className="w-2/12 ">
                       <img className="h-12 m-2  w-9/12" src={logo} alt="logo" />
                   </div>
                   <div className="w-4/12 h-12 p-2 rounded-lg border-2">
                       <input className="w-10/12  h-4 border-r-2" type="text" name="search" placeholder="Search for videos and accounts..." id="" />
+=======
+          <div className="flex flex-row justify-around rounded-md bg-white shadow-md sticky top-0 items-center w-full mx-auto ">
+                  <div className="w-2/12 ">
+                      <img className="h-12 m-2  w-9/12" src={logo} alt="logo" />
+                  </div>
+                  <div className="w-4/12 h-12 p-2 flex flex-row items-center rounded-lg border-2">
+                      <input className="w-10/12 focus:outline-none  h-8 border-r-2" type="text" name="search" placeholder="Search for videos and accounts..." id="" />
+>>>>>>> main
                        <FontAwesomeIcon className="ml-6" icon={faSearch}/>
                   </div>
                   <div className="w-2/12 h-12  flex flex-row  items-center">
