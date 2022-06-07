@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import Login from "./components/loginForm";
 import Home from "./pages/home";
 import Upload from "./pages/upload";
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <Routes>
       <Route  path="/upload" element={<Upload />} />
       <Route index element={<Home />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
     </BrowserRouter>
   );

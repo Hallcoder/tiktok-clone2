@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCloudUpload,
@@ -7,10 +7,26 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../components/common/navBar";
 import Form from "../components/form";
+import Login from './../components/loginForm';
 function Upload() {
+  const [styles, setStyles] = useState({
+    display:"none",
+    border:"2px solid red"
+  })
+const  handleDisplay = () => {
+    console.log("Hello");
+    setStyles({
+      display:"block",
+    })
+   }
+const handleDisplay2 = () => {
+  setStyles({
+    display:"none",
+  })
+} 
   return (
     <>
-      <NavBar />
+      <NavBar onDisplay={handleDisplay}/>
       <div className="h-screen flex flex-row justify-around">
         <div className="border-2 shadow-md w-10/12 ml-auto mr-auto mt-10 text-xl h-full flex flex-row rounded-md min-w-1/2">
           <div className="w-4/12  ">
@@ -39,6 +55,9 @@ function Upload() {
           <div className="w-8/12">
             <Form />
           </div>
+        </div>
+        <div style={styles} className="border-2 h-screen w-full  items-center justify-center  fixed bg-black bg-opacity-40 top-0 left-0 p-96  shadow-xl shadow-black ">
+          <Login Display={handleDisplay2} />
         </div>
       </div>
     </>
