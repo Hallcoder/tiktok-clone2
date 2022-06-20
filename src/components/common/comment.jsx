@@ -1,10 +1,12 @@
-import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { faComment } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 const Comment = () => {
+    let normal = "flex flex-col rounded-full w-12/12 h-8 p-2 ";
+    let active = "flex flex-col rounded-full w-12/12 h-8 p-2 ";
     return ( 
-        <div className="flex flex-col rounded-full hover:bg-cyan-100">
-            <FontAwesomeIcon className="flex flex-col rounded-full text-white border-2 border-black w-12/12 h-8 p-2 bg-black" icon={faComment}/>
+        <div className="flex flex-col rounded-full ">
+            <FontAwesomeIcon className={normal}  icon={faComment}/>
             <p className="text-md">4.3k</p>
         </div>
      );

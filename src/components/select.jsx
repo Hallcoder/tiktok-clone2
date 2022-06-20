@@ -1,21 +1,23 @@
 import React from 'react';
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-function Select1({label,data}) {
+import {InputLabel, MenuItem, Select } from "@mui/material";
+function Select1({label,data,onChange,value,name}) {
     return ( 
         <div>
             <InputLabel id="demo-simple-select-label">{label}</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={"January"}
+              value={value}
+              name={name}
               className="w-full"
-              label="age"
-            //   onChange={handleChange}
+              label={label}
+              onChange={(e) => onChange(e)}
             >
              {data.map(month => {
-                 return <MenuItem key={month} value={month}>{month}</MenuItem>
+                 return <MenuItem key={month} name={name} value={month}>{month}</MenuItem>
              })}
             </Select>
+            
         </div>
             
      );

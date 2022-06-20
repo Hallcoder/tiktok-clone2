@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCloudUpload,
   faCloudUploadAlt,
-  faUpload,
 } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../components/common/navBar";
 import Form from "../components/form";
@@ -26,7 +24,8 @@ const handleDisplay2 = () => {
 } 
   return (
     <>
-      <NavBar onDisplay={handleDisplay}/>
+    <div  className="w-10/12 m-auto mb-4 h-4">
+    <NavBar onDisplay={handleDisplay}/></div>  
       <div className="h-screen flex flex-row justify-around">
         <div className="border-2 shadow-md w-10/12 ml-auto mr-auto mt-10 text-xl h-full flex flex-row rounded-md min-w-1/2">
           <div className="w-4/12  ">

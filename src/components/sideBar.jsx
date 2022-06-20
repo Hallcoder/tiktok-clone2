@@ -29,7 +29,7 @@ class SideBar extends Component {
           <p className="text-gray-400">
             Login in to follow creators, like videos, and view <br /> comments
           </p>
-          <button className=" mb-2 w-full border h-12 rounded-lg mt-4 hover:bg-red-50 border-red-600 font-bold text-red-600">Log in</button>
+          <button className=" mb-2 w-11/12 border h-12 rounded-lg mt-4 hover:bg-red-50 border-red-600 font-bold text-red-600">Log in</button>
         </div>
 
         <div id="suggested-accounts">

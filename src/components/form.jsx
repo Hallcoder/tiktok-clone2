@@ -1,7 +1,16 @@
 import React from "react";
+import { useState } from "react";
 function Form() {
+  const [data,setData] = useState({
+    caption:'',
+    
+  })
+  const upload = (e) => {
+    e.preventDefault();
+
+  }
   return (
-    <form method="post" className="h-5/6 w-11/12  mt-32">
+    <form method="post" onSubmit={upload} className="h-5/6 w-11/12  mt-32">
       <div className="flex flex-col h-16  w-11/12  ml-4 mt-4">
         <label className="font-bold text-md">Caption</label>
         <input
