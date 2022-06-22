@@ -1,10 +1,9 @@
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Video from "../videos/New Project.mp4";
 import React, { Component } from "react";
-import Person2 from "../images/person2.jpg";
-import Comment from "./common/comment";
+import ReactPlayer from "react-player";
 import Like from "./common/like";
+import Comment from "./common/comment";
 import Share from "./common/share";
 class Post extends Component {
   state = {
@@ -12,15 +11,26 @@ class Post extends Component {
     isShared:false,
     isCommentedOn:false,
   };
- inactive ='flex flex-col  border-black  rounded-full w-12/12 h-8 p-2 ';
- active = 'flex flex-col  border-black  rounded-full w-12/12 h-8 p-2 text-red-500'
+  handleLike = () => {
+    this.setState({isLiked:!this.state.isLiked});
+  }
+  handleShare = () => {
+    this.setState({isShared:!this.state.isShared});
+  }
+  handleComment = () => {
+    this.setState({isCommentedOn:!this.state.isCommentedOn});
+  }
+ inactive ='flex flex-col justify-start  border-black  rounded-full w-9/12 h-10 p-2 ';
+ active = 'flex flex-col  justify-start border-black bg-red-500 rounded-full w-9/12 h-8 p-2 text-white'
   render() {
+    const {isLiked,isCommentedOn,isShared} = this.state;
+    const {profilePicture,video,user}  = this.props;
     return (
-      <div className="h-screen w-full flex flex-row border-b-2 mt-1 ">
+      <div className="h-3/6 w-full flex flex-row  mt-1 ">
         <div id="profile" className="w-1/12">
           <img
             className="w-8/12 h-10 m-auto rounded-full"
-            src={Person2}
+            src={profilePicture}
             alt="profile"
           />
         </div>
@@ -28,7 +38,7 @@ class Post extends Component {
           <div id="infoAccount" className="flex flex-col gap-2">
             <h1 className="font-bold">
               <a href="#" className="no-underline hover:underline ">
-                Guy12z
+                {user}
               </a>
               <div>
                 <a href="#" className="no-underline hover:underline ">#Live</a>
@@ -44,14 +54,12 @@ class Post extends Component {
             </div>
           </div>
           <div id="video" className="flex flex-row">
-            <video className="h-5/6 w-9/12 mb-4 rounded-lg" controls autoplay>
-                <source src={Video}/>
-            </video>
-            <div className="flex flex-col p-2   justify-end">
-          <Like class={this.active}/>
-          <Comment classs={this.inactive}  active={this.activity}/>
-          <Share classs={this.active} active={this.activity} onClick={this.handleLike}/>
-        </div>
+            <ReactPlayer url={video} style={{height:'10vh',width:'80%'}} width="80%" height="60vh" className=" w-9/12 mb-4 bg-black rounded-lg" controls autoplay />
+            <div className="flex flex-col p-2  justify-end">
+          <Like classs={isLiked ? this.active:this.inactive} onClick={this.handleLike} />
+          <Comment classs={isCommentedOn ? this.active: this.inactive} onClick={this.handleComment} />
+          <Share classs={isShared ? this.active:this.inactive} onClick={this.handleShare} />
+           </div>
           </div>
         </div>
       </div>
