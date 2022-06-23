@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../components/common/navBar";
 import Form from "../components/form";
 import Login from "./../components/loginForm";
@@ -10,11 +8,11 @@ function Upload() {
     display: "none",
     border: "2px solid red",
   });
+const [message,setMessage] = useState('uploading...')
 const [loadingStyle,setLoading]  = useState({
   display: "none",
 })
   const handleDisplay = () => {
-    console.log("Hello");
     setStyles({
       display: "block",
     });
@@ -24,20 +22,21 @@ const [loadingStyle,setLoading]  = useState({
       display: "none",
     });
   };
-  const handleLoading = ()=>{
+  const handleLoading = (message)=>{
     setTimeout(()=>{
        setLoading({display: "none"});
     },2000)
     setLoading({display: "block"})
+    setMessage(message);
   }
   return (
     <>
       <div className="w-10/12 m-auto mb-4 h-4">
-        <NavBar onDisplay={handleDisplay} onLoad={handleLoading} />
+        <NavBar onDisplay={handleDisplay} onLoad={()=>handleLoading()} />
       </div>
     <div className="h-screen">
       <div className="h-5/6">
-        <Form />
+        <Form onLoad={handleLoading}/>
       </div>
       <div
         style={styles}
@@ -49,7 +48,7 @@ const [loadingStyle,setLoading]  = useState({
         style={loadingStyle}
         className="border-2 h-screen w-full  items-center justify-center  fixed bg-black bg-opacity-40 top-0 left-0 p-96  shadow-xl shadow-black "
       >
-        <Loader message={"Logging Out..."}  />
+        <Loader message={message}  />
       </div>
     </div></>
     

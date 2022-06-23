@@ -6,7 +6,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ErrorBadge from "./common/errorBadge";
 import SuccessBadge from "./common/successBage";
-function Form() {
+function Form({onLoad}) {
   var [data,setData] = useState({
     caption:'',
     visibility:'',
@@ -26,7 +26,7 @@ function Form() {
       action:data.action,
       file:data.file,
     }
-    console.log(data);
+   onLoad("uploading111");
     await axios.post('http://localhost:4000/post/upload',data,{withCredentials:true})
                 .then(res =>res)
                 .then(data => {

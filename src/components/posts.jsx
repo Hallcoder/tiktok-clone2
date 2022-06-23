@@ -8,7 +8,7 @@ import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons';
 const Posts = () => {
     const [posts,setPosts] = useState([]);
     useEffect(() =>{
-        axios.get('http://localhost:4000/post/posts',{},{withCredentials:true})
+        axios.get('https://tiktak-bapp.herokuapp.com/post/posts',{},{withCredentials:true})
              .then((response) =>{
                 console.log(response.data.data[0].uploadedBy);
                 setPosts(response.data.data);
@@ -18,8 +18,8 @@ const Posts = () => {
         <div>
             {posts.map(post => {
                 console.log(post);
-                const {profilePicture,content} = post;
-                return <Post profilePicture={profilePicture} user={post.uploadedBy.username} video={content.secure_url}  />
+                const {content} = post;
+                return <Post profilePicture={post.uploadedBy.profilePicture} user={post.uploadedBy.username} video={content.secure_url}  />
             })}
             <div className="text-center underline cursor-pointer">
                <p>No more Posts to show. Back to top</p>

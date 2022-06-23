@@ -25,6 +25,7 @@ class Post extends Component {
   render() {
     const {isLiked,isCommentedOn,isShared} = this.state;
     const {profilePicture,video,user}  = this.props;
+    console.log("prof:",profilePicture)
     return (
       <div className="h-3/6 w-full flex flex-row  mt-1 ">
         <div id="profile" className="w-1/12">

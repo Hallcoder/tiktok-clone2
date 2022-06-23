@@ -22,8 +22,7 @@ function ImageUpload({Display,changePage}) {
     e.target.innerHTML =`<button className="rounded-full border-l-2 animate-spin">
     Uploading...
  </button>`;
-    let api = axios.create({ baseUrl:'http://localhost:4000'});
-    await api.post('http://localhost:4000/user/profilePicture',{image:{file:image}},{withCredentials:true})
+    await axios.post('https://tiktak-bapp.herokuapp.com/user/profilePicture',{image:{file:image}},{withCredentials:true})
              .then(res=>res)
              .then(data =>{
                 console.log(data);

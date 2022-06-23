@@ -1,8 +1,7 @@
 import axios from "axios";
-const api = axios.create({ baseUrl: "http://localhost:4000" });
  async function Submit(data,changePage) {
-  await api
-    .post("http://localhost:4000/user/signup", data)
+  await axios
+    .post("https://tiktak-bapp.herokuapp.com/user/signup",data,{withCredentials:true})
     .then((res) => res)
     .then((data) => {
       console.log(data.data.data);

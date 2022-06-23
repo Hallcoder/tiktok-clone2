@@ -16,7 +16,7 @@ function Login({Display}){
       email:account.email,
       password:account.password
     }
-    await axios.post('http://localhost:4000/user/login',data,{withCredentials: true})
+    await axios.post('https://tiktak-bapp.herokuapp.com/user/login',data,{withCredentials: true})
                .then(res => res)
                .then(data => {
                 console.log(data);
