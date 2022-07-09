@@ -1,7 +1,6 @@
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
 import ReactPlayer from "react-player";
 import Like from "./common/like";
@@ -13,9 +12,7 @@ class Post extends Component {
   active =
     "flex flex-col  justify-start border-black bg-red-500 rounded-full w-9/12 h-8 p-2 text-white";
   render() {
-    console.log(this.props.likes);
     const { profilePicture, video, user,isLiked,isShared,isCommentedOn,onLike,onComment,onShare } = this.props;
-    console.log("prof:", profilePicture);
     return (
       <div className="h-3/6 w-full flex flex-row  mt-1 ">
         <div id="profile" className="w-1/12">
