@@ -20,8 +20,9 @@ const  handleDisplay = () => {
       display:"block",
     })
    }
-   const handleLoading = ()=>{
+   const handleLoading = (styles)=>{
     setTimeout(()=>{
+      if(styles)
        setLoading({display: "none"});
     },2000)
     setLoading({display: "block"})
@@ -35,7 +36,7 @@ const handleDisplay2 = () => {
         <div className="w-8/12 m-auto">
         <NavBar onDisplay={handleDisplay}  onLoad={handleLoading}/>
         <div className="flex flex-row m-1 ">
-        <div className="sticky top-0 w-4/12 animate-pulse">
+        <div className="sticky top-0 w-4/12">
         <SideBar  />
         </div>
           <Posts />

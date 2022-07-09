@@ -6,23 +6,24 @@ import { faCamera, faEdit,faClose } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-function ImageUpload({Display,changePage}) {
+function ImageUpload({Display,changePage,image,setImage}) {
   const navigate =useNavigate()
-  const [image, setimage] = useState();
-  const setImage = (e) => {
-    let file = e.target.files[0];
-    const reader  = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-        setimage(reader.result); 
-    }
-  };
+  // const [image, setimage] = useState();
+  // const setImage = (e) => {
+  //   let file = e.target.files[0];
+  //   const reader  = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //       setimage(reader.result); 
+  //   }
+  // };
   const submit = async(e)=>{
     // console.log(e.target.innerText);
     e.target.innerHTML =`<button className="rounded-full border-l-2 animate-spin">
     Uploading...
  </button>`;
-    await axios.post('https://tiktak-bapp.herokuapp.com/user/profilePicture',{image:{file:image}},{withCredentials:true})
+    let api = axios.create({ baseUrl:'http://localhost:4000'});
+    await api.post('http://localhost:4000/user/profilePicture',{image:{file:image}},{withCredentials:true})
              .then(res=>res)
              .then(data =>{
                 console.log(data);

@@ -20,13 +20,12 @@ function NavBar({ onDisplay, onLoad }) {
       setLogin(true);
       const { profilePicture } = JSON.parse(
         localStorage.getItem("currentUser")
-      ).data;
+      );
       setProfile(profilePicture);
     }
   },[])
   const logOut  = () =>{
-  onLoad();
-  console.log('logout')
+  onLoad("Logging out...");
   localStorage.removeItem("currentUser");
   setLogin(false);
     }

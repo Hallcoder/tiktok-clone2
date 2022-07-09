@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../components/common/navBar";
 import Form from "../components/form";
 import Login from "./../components/loginForm";
@@ -8,6 +8,7 @@ function Upload() {
     display: "none",
     border: "2px solid red",
   });
+const [isDataHere,setIsData] = useState(false);
 const [message,setMessage] = useState('uploading...')
 const [loadingStyle,setLoading]  = useState({
   display: "none",
@@ -22,12 +23,26 @@ const [loadingStyle,setLoading]  = useState({
       display: "none",
     });
   };
+  useEffect(()=>{
+    handleLoading()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[isDataHere])
   const handleLoading = (message)=>{
-    setTimeout(()=>{
+    setMessage(message);
+    if(message === "uploading..."){
+      setLoading({display: "block"})
+      while(isDataHere){
+        setInterval(()=>{
+         setLoading({display: "none"});
+      },1000)
+    }
+    }
+    else{
+      setLoading({display: "block"})
+      setTimeout(()=>{
        setLoading({display: "none"});
     },2000)
-    setLoading({display: "block"})
-    setMessage(message);
+    }
   }
   return (
     <>
@@ -36,7 +51,7 @@ const [loadingStyle,setLoading]  = useState({
       </div>
     <div className="h-screen">
       <div className="h-5/6">
-        <Form onLoad={handleLoading}/>
+        <Form onLoad={handleLoading} styles={setStyles} IsData={setIsData}/>
       </div>
       <div
         style={styles}
@@ -50,7 +65,8 @@ const [loadingStyle,setLoading]  = useState({
       >
         <Loader message={message}  />
       </div>
-    </div></>
+    </div>
+    </>
     
   );
 }

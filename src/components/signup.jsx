@@ -6,7 +6,7 @@ import Submit from "../utils/submit"
 import { FormHelperText } from "@mui/material";
 import Joi from "joi";
 function SignUp({ Display, changePage }) {
-  const[errors,setErrors] = useState({email:'',username:'',password:'',cpassword:'',year:'',month:'',day:''})
+  const[errors,setErrors] = useState({email:'',username:'',password:'',cpassword:{},year:'',month:'',day:''})
   const[account,setAccount] = useState({
     email:'hallcoder25@gmail.com',
     password:'!!!?!?123Abana',
@@ -58,17 +58,23 @@ function SignUp({ Display, changePage }) {
   return error ? error:{};
  }
  const handleChange = ({currentTarget:input})=>{
-  console.log(input)
-  const errors1 = {...errors};
-  const account1 ={...account};
-  const errorMessage = validateProperty(input);
-  if(errorMessage) errors1[input.name] = errorMessage
-  else delete errors1[input.name];
-  console.log('Error:',errorMessage);
-  account1[input.name] = input.value;
-  setErrors(errors1);
-  setAccount(account1);
-  console.log(account1);
+   const errors1 = {...errors};
+   const account1 ={...account};
+  if(input.name === 'cpassword' ) {
+      errors1['cpassword'].message = (input.value !== account.password) ? "Passwords don't match":'';
+      account1['cpassword'] = input.value;
+      setAccount(account1);
+      setErrors(errors1);
+      console.log("Errors set",errors);
+  }else{
+    const errorMessage = validateProperty(input);
+    if(errorMessage) errors1[input.name] = errorMessage
+    else delete errors1[input.name];
+    account1[input.name] = input.value;
+    setErrors(errors1);
+    setAccount(account1);
+  }
+  console.log(account)
   }
   const handleSubmit = (e) =>{
   e.preventDefault();
@@ -81,7 +87,7 @@ function SignUp({ Display, changePage }) {
   }
   const{email,password,username,cpassword,year,month,day} = account;
   return (
-    <div className="w-4/12 border-2 h-5/6 flex flex-col justify-around ml-36 rounded-lg  fixed bg-white top-20   shadow-xl">
+    <div className="w-4/12 border-2 h-5/6 flex flex-col justify-around ml-36 rounded-lg  fixed bg-white top-14   shadow-xl">
       <div className="w-10/12 ml-auto mr-auto flex justify-between">
         <FontAwesomeIcon
           icon={faCaretLeft}
@@ -168,7 +174,7 @@ function SignUp({ Display, changePage }) {
           </div>
           <input
             type="submit"
-            value="Log in"
+            value="Sign Up"
             className="w-10/12 h-12 font-bold  hover:cursor-pointer mt-4 bg-red-600 text-white rounded-sm m-auto"
           />
         </form>

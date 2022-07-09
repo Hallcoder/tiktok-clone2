@@ -1,11 +1,12 @@
 import axios from "axios";
+const api = axios.create({ baseUrl: "http://localhost:4000" });
  async function Submit(data,changePage) {
-  await axios
-    .post("https://tiktak-bapp.herokuapp.com/user/signup",data,{withCredentials:true})
+  await api
+    .post("http://localhost:4000/user/signup", data)
     .then((res) => res)
     .then((data) => {
       console.log(data.data.data);
-      localStorage.setItem("currentUser",JSON.stringify(data.data.data));
+      // changePage('imageUpload')
       changePage('login')
     })
     .catch((err) => {
