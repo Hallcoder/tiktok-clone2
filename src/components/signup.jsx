@@ -57,6 +57,9 @@ function SignUp({ Display, changePage }) {
   const {error} = schem.validate(obj)
   return error ? error:{};
  }
+ const handleSelectChange = (e) => {
+ v
+ }
  const handleChange = ({currentTarget:input})=>{
    const errors1 = {...errors};
    const account1 ={...account};
@@ -103,9 +106,9 @@ function SignUp({ Display, changePage }) {
         <h1 className="text-center font-bold text-2xl">Sign up</h1>
         <form className="flex flex-col justify-around" onSubmit={(e) => handleSubmit(e)}>
           <div className="flex flex-row justify-around">
-            <Select1 data={months} name='month' value={month}  onChange={handleChange} label={"month"}  />
-            <Select1 data={days} name='day' value={day} onChange={handleChange} label={"day"} />
-            <Select1 data={years} name='year' value={year} onChange={handleChange} label={"year"} />
+            <Select1 data={months} name='month' value={month}  onChange={handleSelectChange} label={"month"}  />
+            <Select1 data={days} name='day' value={day} onChange={handleSelectChange} label={"day"} />
+            <Select1 data={years} name='year' value={year} onChange={handleSelectChange} label={"year"} />
           </div>
           <div className="ml-10">
             <FormHelperText className="w-9/12">
@@ -124,11 +127,11 @@ function SignUp({ Display, changePage }) {
             />
             </div>
             <div className='h-4/6 w-full'>
-              {errors.email.message && (<div class="h-8 m-auto w-10/12 rounded-sm text-red-500 bg-red-200">{errors.email.message}</div>)}
+              {errors.email.message && (<div class="h-8 m-auto w-10/12 rounded-sm text-red-500 bg-red-200">{errors.email.message.match(/[^"]/g).join("")}</div>)}
             </div>
           </div>
           <div>
-            <div  className="w-10/12 flex flex-col bg-gray-100 h-12 m-auto items-center ">
+            <div  className="w-10/12 flex flex-col bg-gray-100 h-12 m-auto mt-4 items-center ">
             <input
               type="username"
               name="username"
@@ -150,7 +153,7 @@ function SignUp({ Display, changePage }) {
                 name="password"
                 onChange={handleChange}
                 placeholder="Password..."
-                className="w-full inline-block border-2 indent-2 rounded-sm  h-full"
+                className="w-full inline-block indent-2 rounded-sm  h-full"
               />
             </div>
                <div className='h-4/6 w-full'>
