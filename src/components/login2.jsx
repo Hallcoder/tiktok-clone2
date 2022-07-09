@@ -1,7 +1,8 @@
 import React from "react";
+import ErrorBadge from './common/errorBadge'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faClose,
+  faClose
 } from "@fortawesome/free-solid-svg-icons";
 function Login2({changePage,Display}) {  
     return (
@@ -39,6 +40,9 @@ function Login2({changePage,Display}) {
             <small className="ml-16 hover:underline hover:cursor-pointer">Log in with password</small>
             <input type="submit" value="Log in"  className="w-10/12 bg-red-600 text-white  h-12 font-bold border-2 rounded-sm m-auto" />
           </form>
+        </div>
+        <div>
+          <ErrorBadge  message={'This page is still in development use email instead..'}/>
         </div>
         <div className="h-10 text-center border-t-2 border-gray-300">
             <p>Don't have account?<strong className="text-red-600 font-bold hover:cursor-pointer" onClick={() => changePage('signup')}>Sign Up</strong></p>
