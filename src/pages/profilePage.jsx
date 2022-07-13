@@ -6,7 +6,7 @@ function ProfilePage() {
 document.title =`${JSON.parse(localStorage.getItem('currentUser')).username} (${JSON.parse(localStorage.getItem('currentUser')).email})`;
     },[])
     return ( 
-        <div className="w-6/12  border-2 ml-[14em] border-red-500 h-[60vh]">
+        <div className="w-6/12  border-2 ml-[14em] border-red-500 mt-4 h-[90vh]">
            <div className="flex ml-12 mt-12">
             <div id="image">
                 <img src={profilePicture} alt="" className="h-20 w-20 rounded-full border" />
@@ -23,6 +23,12 @@ document.title =`${JSON.parse(localStorage.getItem('currentUser')).username} (${
                 <p>0 followers</p>
                 <p>0 following</p>
                 <p>0 likes</p>
+           </div>
+           <div className="ml-14">
+            <p>No bio yet.</p>
+           </div>
+           <div id="videos" className="ml-12">
+            
            </div>
         </div>
      );
