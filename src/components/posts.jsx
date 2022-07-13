@@ -8,48 +8,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 function Posts() {
   const [posts, setPosts] = useState([]);
-  const [state,setState] = useState({
-    isLiked: false,
-    isShared: false,
-    isCommentedOn: false,
-    likes: 0,
-    isLikedByCurrentUser:false
-   })
    useEffect(() =>{
     axios.get('http://localhost:4000/post/posts')
       .then((response) =>response)
       .then(data => {
       setPosts(data.data.data);
       })
-   },[])
-   const handleLike = (post) => {
-    let State = {...state}
- State.isLikedByCurrentUser = !State.isLikedByCurrentUser;
- setState(State);
-  // axios.post('http://localhost:4000/post/like',{user:localStorage.getItem('currentUser')})
-
-   }
-    const  handleShare = () => {
-        setState(state.isShared + 1);
-      };
-    const  handleComment = () => {
-        setState(state.isCommentedOn - 1);
-      };
+   },[]);
   if (posts.length !== 0) {
     return (
       <div>
         {posts.map((post) => {
           const { content } = post;
+          // let liked = post.likes.length > 0 ? post.likes.length:state.likes;
+          let isLikedByCurrentUser = false;
+          if(post.likes.filter(like => JSON.parse(localStorage.getItem('currentUser')).email === like.email)) isLikedByCurrentUser = true;
           return (
             <Post
+              key={post._id}
+              postId={post._id}
               profilePicture={post.uploadedBy.profilePicture}
               user={post.uploadedBy.username}
               video={content.secure_url}
               likes={post.likes.length}
-              isLiked={state.isLikedByCurrentUser}
-              onLike={() => handleLike(post)}
-              onComment={() => handleComment(post)}
-              onShare={() => handleShare(post)}
+              likeArray={post.likes}
             />
           );
         })}

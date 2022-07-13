@@ -1,18 +1,47 @@
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import ReactPlayer from "react-player";
+import {useState,useEffect} from 'react'
 import Like from "./common/like";
+import axios from "axios";
 import Comment from "./common/comment";
 import Share from "./common/share";
-class Post extends Component {
-  inactive =
+function Post({postId,profilePicture,likeArray,likes,video,user,isShared,isCommentedOn,onComment,onShare }){
+  const [Likes,setLikes] = useState(likes);
+  const [isLiked,setIsLiked] = useState(false)
+  // const [isLikedByCurrentUser,setIsLikedByCurrentUser] = useState(false);
+  useEffect(()=>{
+    setLikes(likes);
+    likeArray.map(like => {
+      if(JSON.parse(like).username === JSON.parse(localStorage.getItem('currentUser')).username) {
+        setIsLiked(true);
+      }
+    })
+  },[])
+  const handleLike = (postId) =>{
+    if(isLiked){
+    setIsLiked(!isLiked)
+    axios.post('http://localhost:4000/post/like',{action:'dislike',post:postId,user:localStorage.getItem('currentUser')})
+    .then((res) => res)
+    .then(data => {
+      console.log(data)
+      setLikes(Likes - 1)
+    })
+    console.log(Likes)
+  }else if(!isLiked){
+    setIsLiked(!isLiked)
+    axios.post('http://localhost:4000/post/like',{action:'like',post:postId,user:localStorage.getItem('currentUser')})
+    .then((res) => res)
+    .then(data => console.log(data))
+      setLikes(Likes + 1)
+  }
+  }
+  const inactive =
     "flex flex-col justify-start  border-black  rounded-full w-9/12 h-10 p-2 ";
-  active =
+ const active =
     "flex flex-col  justify-start border-black bg-red-500 rounded-full w-9/12 h-8 p-2 text-white";
-  render() {
-    const { profilePicture, video, user,isLiked,isShared,isCommentedOn,onLike,onComment,onShare } = this.props;
     return (
       <div className="h-3/6 w-full flex flex-row  mt-1 ">
         <div id="profile" className="w-1/12">
@@ -59,20 +88,20 @@ class Post extends Component {
               height="60vh"
               className=" w-9/12 mb-4 bg-black rounded-lg"
               controls
-              autoplay
+              autoPlay
             />
-            <div className="flex flex-col p-2  justify-end">
+            <div className="flex flex-col p-2 justify-end">
               <Like
-                classs={isLiked ? this.active : this.inactive}
-                likes={this.props.likes}
-                onClick={onLike}
+                classs={isLiked ? active : inactive}
+                likes={Likes}
+                onClick={() => handleLike(postId)}
               />
               <Comment
-                classs={isCommentedOn ? this.active : this.inactive}
+                classs={isCommentedOn ? active : inactive}
                 onClick={onComment}
               />
               <Share
-                classs={isShared ? this.active : this.inactive}
+                classs={isShared ? active : inactive}
                 onClick={onShare}
               />
             </div>
@@ -80,7 +109,6 @@ class Post extends Component {
         </div>
       </div>
     );
-  }
 }
 
 export default Post;
