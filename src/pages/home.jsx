@@ -33,7 +33,7 @@ const handleDisplay2 = () => {
   })
 }
     return ( 
-        <div className="w-8/12 m-auto">
+        <div className="w-8/12 text-sm m-auto">
         <NavBar onDisplay={handleDisplay}  onLoad={handleLoading}/>
         <div className="flex flex-row m-1 ">
         <div className="sticky top-0 w-4/12">
