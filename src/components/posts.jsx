@@ -32,6 +32,7 @@ function Posts() {
               video={content.secure_url}
               likes={post.likes.length}
               likeArray={post.likes}
+              comments={post.comments}
             />
           );
         })}

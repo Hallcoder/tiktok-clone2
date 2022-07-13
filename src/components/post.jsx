@@ -8,10 +8,10 @@ import Like from "./common/like";
 import axios from "axios";
 import Comment from "./common/comment";
 import Share from "./common/share";
-function Post({postId,profilePicture,likeArray,likes,video,user,isShared,isCommentedOn,onComment,onShare }){
+import Comments from "./Comments";
+function Post({postId,profilePicture,likeArray,comments,likes,video,user,isShared,isCommentedOn,onComment,onShare }){
   const [Likes,setLikes] = useState(likes);
   const [isLiked,setIsLiked] = useState(false)
-  // const [isLikedByCurrentUser,setIsLikedByCurrentUser] = useState(false);
   useEffect(()=>{
     setLikes(likes);
     likeArray.map(like => {
@@ -40,7 +40,7 @@ function Post({postId,profilePicture,likeArray,likes,video,user,isShared,isComme
   }
   const inactive =
     "flex flex-col justify-start  border-black  rounded-full w-9/12 h-10 p-2 ";
- const active =
+  const active =
     "flex flex-col  justify-start border-black bg-red-500 rounded-full w-9/12 h-8 p-2 text-white";
     return (
       <div className="h-3/6 w-full flex flex-row  mt-1 ">
@@ -106,6 +106,10 @@ function Post({postId,profilePicture,likeArray,likes,video,user,isShared,isComme
               />
             </div>
           </div>
+          <div>
+            <h1>Comments</h1>
+            <Comments comments={comments}/>
+            </div>
         </div>
       </div>
     );
