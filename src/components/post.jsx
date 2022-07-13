@@ -9,9 +9,14 @@ import axios from "axios";
 import Comment from "./common/comment";
 import Share from "./common/share";
 import Comments from "./Comments";
-function Post({postId,profilePicture,likeArray,comments,likes,video,user,isShared,isCommentedOn,onComment,onShare }){
+function Post({postId,profilePicture,likeArray,comments,likes,video,user,isShared,isCommentedOn,onShare }){
   const [Likes,setLikes] = useState(likes);
-  const [isLiked,setIsLiked] = useState(false)
+  const [isLiked,setIsLiked] = useState(false);
+  const [commentStyles,setCommentsStyles] = useState({display:'none'})
+  const handleComment = () => {
+    let newStyle = commentStyles.display === 'none' ? {display:'block'}:{display:'none'};
+    setCommentsStyles(newStyle);
+  }
   useEffect(()=>{
     setLikes(likes);
     likeArray.map(like => {
@@ -98,7 +103,7 @@ function Post({postId,profilePicture,likeArray,comments,likes,video,user,isShare
               />
               <Comment
                 classs={isCommentedOn ? active : inactive}
-                onClick={onComment}
+                onClick={handleComment}
               />
               <Share
                 classs={isShared ? active : inactive}
@@ -106,10 +111,10 @@ function Post({postId,profilePicture,likeArray,comments,likes,video,user,isShare
               />
             </div>
           </div>
-          <div>
+          <div className="h-2/6">
             <h1>Comments</h1>
-            <Comments comments={comments}/>
-            </div>
+            <Comments post={postId} style={commentStyles} comments={comments}/>
+          </div>
         </div>
       </div>
     );

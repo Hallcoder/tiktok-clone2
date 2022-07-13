@@ -9,5 +9,4 @@ const Like = ({classs,onClick,likes}) => {
         </div>
      );
 }
- 
 export default Like;
