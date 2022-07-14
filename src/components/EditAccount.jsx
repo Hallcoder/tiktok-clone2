@@ -50,20 +50,20 @@ function EditAccount() {
         </div>
         <form action="post" className='mt-8'>
             <div className='w-11/12'>
-              <div className="flex items-center">
-                  <label htmlFor="username">Username:</label>
-                  <Input variant='filled' value={JSON.parse(localStorage.getItem('currentUser')).username} className="text-red-500" />
+              <div className="flex items-center justify-around">
+                  <label htmlFor="username" className="w-3/12 text-sm">Username:</label>
+                  <div className="w-9/12"><Input variant='filled' value={JSON.parse(localStorage.getItem('currentUser')).username} className="text-red-500" /></div>
               </div>
               <p className="text-xs ml-10 text-gray-500">{`www.tiktak.com/@${JSON.parse(localStorage.getItem('currentUser')).username}`}</p>
               <p className="text-xs ml-10 text-gray-500">Usernames can only contain letters, numbers, underscores, and periods. Changing your username will also change your profile link.</p>
             </div>
-            <div className="flex items-center">
-                <label htmlFor="name">Name:</label>
-                <Input variant='flushed' value={JSON.parse(localStorage.getItem('currentUser')).username} />
+            <div className="flex items-center justify-around">
+                <label htmlFor="name" className="w-2/12 text-sm">Name:</label>
+                <div className='w-9/12'><Input variant='flushed' value={JSON.parse(localStorage.getItem('currentUser')).username} /></div>
             </div>
-            <div className="flex items-center">
-                <label htmlFor="Bio">Bio:</label>
-                <Input variant='filled' placeholder="Bio" className='w-9/12 border-2 border-red-400'/>
+            <div className="flex items-center justify-around">
+                <label htmlFor="Bio" className="w-2/12 text-sm">Bio:</label>
+                <div className='w-9/12'><textarea name="bio" id="Bio" className='border border-gray-100 rounded-sm bg-gray-100' placeholder='Bio...' style={{resize:'none'}} cols="43" rows="4"></textarea></div>
             </div>
         </form>
       </div>
