@@ -177,7 +177,6 @@ const handleShowPassword = () => {
                 placeholder="Confirm Password..."
                 className="w-full indent-2 rounded-sm  h-full"
               />
-            {/* <span className="flex w-2/12 border-l-2 h-full justify-center text-xl items-center">{state.visible ? <AiFillEyeInvisible className='text-center' onClick={handleShowPassword}/>:<AiFillEye className="text-center" onClick={handleShowPassword}/>}</span> */}
             </div>
                <div className='h-4/6 w-full'>
               {errors.cpassword.message && (<div class="h-2/6 m-auto w-10/12 rounded-sm text-red-500 bg-red-200">{errors.cpassword.message}</div>)}
