@@ -3,7 +3,7 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TbEdit } from "react-icons/tb";
 import { Input } from '@chakra-ui/react'
-function EditAccount() {
+function EditAccount({handleClose}) {
   const [image, setimage] = useState();
   useEffect(() => {
     setimage(JSON.parse(localStorage.getItem("currentUser")).profilePicture);
@@ -25,7 +25,7 @@ function EditAccount() {
           <FontAwesomeIcon
             className="font-bold font-sans text-2xl bg-gray-100 rounded-full p-4 h-6 w-6 hover:cursor-pointer"
             icon={faClose}
-            // onClick={Display}
+            onClick={handleClose}
           />
         </div>
       </div>
@@ -64,6 +64,9 @@ function EditAccount() {
             <div className="flex items-center justify-around">
                 <label htmlFor="Bio" className="w-2/12 text-sm">Bio:</label>
                 <div className='w-9/12'><textarea name="bio" id="Bio" className='border border-gray-100 rounded-sm bg-gray-100' placeholder='Bio...' style={{resize:'none'}} cols="43" rows="4"></textarea></div>
+            </div>
+            <div className="m-auto w-3/12">
+                <input type="submit" value="Save Changes" className="w-28 rounded-md  h-12 text-white font-bold bg-red-600" />
             </div>
         </form>
       </div>
