@@ -48,7 +48,7 @@ function Post({postId,profilePicture,likeArray,comments,likes,video,user,isShare
   const active =
     "flex flex-col  justify-start border-black bg-red-500 rounded-full w-9/12 h-8 p-2 text-white";
     return (
-      <div className="h-3/6 w-full flex flex-row  mt-1 ">
+      <div className="h-4/6 w-full flex flex-row  mt-1 ">
         <div id="profile" className="w-1/12">
           <img
             className="w-8/12 h-10 m-auto rounded-full"
