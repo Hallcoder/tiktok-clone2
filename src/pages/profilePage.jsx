@@ -20,6 +20,9 @@ function ProfilePage() {
             setVideos(data.data.data)
          })
   }, []); 
+  const handleClose = () => {
+   setStyles({display: 'none'});
+  }
   const handleEdit = () => {
    setStyles({display: 'block'})
   }  
@@ -57,10 +60,10 @@ function ProfilePage() {
           </div>
           <div id="videos" className="ml-12">
             <div className="flex">
-              <button className="w-4/12 border-b-4 m-1 border-blue-800">
+              <button className="w-4/12 border-b-4 m-1 h-12 border-red-500 hover:bg-gray-100">
                 Videos
               </button>
-              <button className="w-4/12 border-b-4 m-1 border-blue-800">
+              <button className="w-4/12 border-b-4 m-1 h-12 border-gray-200 hover:bg-gray-100">
                 Liked
               </button>
             </div>
@@ -77,7 +80,7 @@ function ProfilePage() {
         </div>
       </div>
       <div style={styles} className="border-2 h-screen w-full  items-center justify-center  fixed bg-black bg-opacity-40 top-0 left-0 p-96  shadow-xl shadow-black ">
-        <EditAccount />
+        <EditAccount handleClose={handleClose} />
       </div>
     </div>
   );
