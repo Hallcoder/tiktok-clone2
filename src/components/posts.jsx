@@ -20,9 +20,6 @@ function Posts() {
       <div>
         {posts.map((post) => {
           const { content } = post;
-          // let liked = post.likes.length > 0 ? post.likes.length:state.likes;
-          let isLikedByCurrentUser = false;
-          if(post.likes.filter(like => JSON.parse(localStorage.getItem('currentUser')).email === like.email)) isLikedByCurrentUser = true;
           return (
             <Post
               key={post._id}

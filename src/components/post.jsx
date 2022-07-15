@@ -19,11 +19,14 @@ function Post({postId,profilePicture,likeArray,comments,likes,video,user,isShare
   }
   useEffect(()=>{
     setLikes(likes);
-    likeArray.map(like => {
-      if(JSON.parse(like).username === JSON.parse(localStorage.getItem('currentUser')).username) {
-        setIsLiked(true);
-      }
-    })
+    if(likeArray.length != 0 ){
+      likeArray.map(like => {
+        console.log(likeArray)
+        if(localStorage.getItem('currentUser') && like !== null && JSON.parse(like).username === JSON.parse(localStorage.getItem('currentUser')).username) {
+          setIsLiked(true);
+        }
+      })
+    }  
   },[])
   const handleLike = (postId) =>{
     if(isLiked){

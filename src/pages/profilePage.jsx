@@ -6,7 +6,7 @@ import axios from "axios";
 import EditAccount from "../components/EditAccount";
 function ProfilePage() {
   const [styles,setStyles] = useState({display:'none'});
-  const { username, profilePicture } = JSON.parse(
+  const { username, profilePicture,bio } = JSON.parse(
     localStorage.getItem("currentUser")
   );
   const [videos,setVideos] = useState([])
@@ -55,8 +55,9 @@ function ProfilePage() {
             <p>0 following</p>
             <p>0 likes</p>
           </div>
-          <div className="ml-14">
-            <p>No bio yet.</p>
+          <div className="ml-14 flex text-sm">
+          Bio: {(bio && <p>{bio}</p>) || (!bio &&<p>No bio yet.</p>)}
+            
           </div>
           <div id="videos" className="ml-12">
             <div className="flex">
