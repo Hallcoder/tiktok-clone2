@@ -34,7 +34,7 @@ function Form({ onLoad, IsData, styles }) {
     };
     onLoad("uploading...");
     await axios
-      .post("http://localhost:4000/post/upload", data, {
+      .post("https://tiktak-bapp.herokuapp.com/post/upload", data, {
         withCredentials: true,
       })
       .then((res) => res)

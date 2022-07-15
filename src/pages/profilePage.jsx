@@ -1,20 +1,29 @@
 import React, { useEffect,useState } from "react";
 import SideBar from '../components/sideBar';
+import Loader from '../components/common/loader'
 import NavBar from '../components/common/navBar'
 import { TbEdit } from "react-icons/tb";
 import axios from "axios";
 import EditAccount from "../components/EditAccount";
+import { useNavigate } from 'react-router-dom';
 function ProfilePage() {
+  let navigate=  useNavigate()
   const [styles,setStyles] = useState({display:'none'});
-  const { username, profilePicture } = JSON.parse(
-    localStorage.getItem("currentUser")
-  );
+  const [loadingStyle,setLoading]  = useState({
+    display: "none",
+  })
+
   const [videos,setVideos] = useState([])
   useEffect(() => {
+    if(!localStorage.getItem("currentUser")){
+      console.log('noooooo')
+      navigate('/')
+      window.location.reload()
+    }
     document.title = `${
       JSON.parse(localStorage.getItem("currentUser")).username
     } (${JSON.parse(localStorage.getItem("currentUser")).email})`;
-    axios.get('http://localhost:4000/post/posts')
+    axios.get('https://tiktak-bapp.herokuapp.com//post/posts')
          .then(response => response)
          .then(data =>{
             setVideos(data.data.data)
@@ -23,13 +32,24 @@ function ProfilePage() {
   const handleClose = () => {
    setStyles({display: 'none'});
   }
+  const handleLoading = (styles)=>{
+    setTimeout(()=>{
+      if(styles)
+       setLoading({display: "none"});
+    },2000)
+    setLoading({display: "block"})
+  }
   const handleEdit = () => {
    setStyles({display: 'block'})
   }  
-  return (
-    <div className="flex flex-col">
+  if(localStorage.getItem("currentUser")){
+     const { username, profilePicture,bio } = JSON.parse(
+      localStorage.getItem("currentUser")
+    )
+      return (
+<div className="flex flex-col">
       <div className="w-9/12 m-auto">
-        <NavBar />
+        <NavBar onLoad={handleLoading} />
       </div>
       <div className='flex'>
         <div className="h-screen w-3/12"><SideBar /></div>
@@ -55,8 +75,9 @@ function ProfilePage() {
             <p>0 following</p>
             <p>0 likes</p>
           </div>
-          <div className="ml-14">
-            <p>No bio yet.</p>
+          <div className="ml-14 flex text-sm">
+          Bio: {(bio && <p>{bio}</p>) || (!bio &&<p>No bio yet.</p>)}
+            
           </div>
           <div id="videos" className="ml-12">
             <div className="flex">
@@ -82,8 +103,20 @@ function ProfilePage() {
       <div style={styles} className="border-2 h-screen w-full  items-center justify-center  fixed bg-black bg-opacity-40 top-0 left-0 p-96  shadow-xl shadow-black ">
         <EditAccount handleClose={handleClose} />
       </div>
+      <div
+        style={loadingStyle}
+        className="border-2 h-screen w-full  items-center justify-center  fixed bg-black bg-opacity-40 top-0 left-0 p-96  shadow-xl shadow-black "
+        >
+        <Loader message={"Logging Out..."}  />
+      </div>
     </div>
-  );
+  )
+    }else if(!localStorage.getItem("currentUser")){
+      return (
+        <div>Log in to access your profile</div>
+      )
+    }
+    
 }
 
 export default ProfilePage;

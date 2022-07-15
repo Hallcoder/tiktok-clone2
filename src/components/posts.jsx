@@ -6,10 +6,10 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
-function Posts() {
+function Posts({open,close}) {
   const [posts, setPosts] = useState([]);
    useEffect(() =>{
-    axios.get('http://localhost:4000/post/posts')
+    axios.get('https://tiktak-bapp.herokuapp.com/post/posts')
       .then((response) =>response)
       .then(data => {
       setPosts(data.data.data);
@@ -20,9 +20,6 @@ function Posts() {
       <div>
         {posts.map((post) => {
           const { content } = post;
-          // let liked = post.likes.length > 0 ? post.likes.length:state.likes;
-          let isLikedByCurrentUser = false;
-          if(post.likes.filter(like => JSON.parse(localStorage.getItem('currentUser')).email === like.email)) isLikedByCurrentUser = true;
           return (
             <Post
               key={post._id}
@@ -33,6 +30,8 @@ function Posts() {
               likes={post.likes.length}
               likeArray={post.likes}
               comments={post.comments}
+              open={open}
+              close={close}
             />
           );
         })}
