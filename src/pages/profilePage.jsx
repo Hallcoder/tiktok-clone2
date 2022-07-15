@@ -23,7 +23,7 @@ function ProfilePage() {
     document.title = `${
       JSON.parse(localStorage.getItem("currentUser")).username
     } (${JSON.parse(localStorage.getItem("currentUser")).email})`;
-    axios.get('http://localhost:4000/post/posts')
+    axios.get('https://tiktak-bapp.herokuapp.com//post/posts')
          .then(response => response)
          .then(data =>{
             setVideos(data.data.data)

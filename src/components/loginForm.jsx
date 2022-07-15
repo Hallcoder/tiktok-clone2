@@ -32,7 +32,7 @@ function Login({ Display }) {
       password: account.password,
     };
     await axios
-      .post("http://localhost:4000/user/login", data, { withCredentials: true })
+      .post("https://tiktak-bapp.herokuapp.com/user/login", data, { withCredentials: true })
       .then((res) => res)
       .then((data) => {
         localStorage.setItem("currentUser", JSON.stringify(data.data.data));

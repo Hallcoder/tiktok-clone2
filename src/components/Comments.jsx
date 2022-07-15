@@ -12,7 +12,7 @@ function Comments({comments,setComments,post,style}) {
         return
        }
        e.preventDefault();
-       axios.post('http://localhost:4000/post/comment',{comment,post,user:localStorage.getItem('currentUser') })
+       axios.post('https://tiktak-bapp.herokuapp.com/post/comment',{comment,post,user:localStorage.getItem('currentUser') })
             .then(res => res)
             .then(data => {
                 let comms = [...comments]

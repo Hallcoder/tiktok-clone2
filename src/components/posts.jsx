@@ -9,7 +9,7 @@ import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 function Posts({open,close}) {
   const [posts, setPosts] = useState([]);
    useEffect(() =>{
-    axios.get('http://localhost:4000/post/posts')
+    axios.get('https://tiktak-bapp.herokuapp.com/post/posts')
       .then((response) =>response)
       .then(data => {
       setPosts(data.data.data);

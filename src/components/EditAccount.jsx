@@ -45,7 +45,7 @@ function EditAccount({handleClose}) {
         bio:account.bio
     }
     console.log(data);
-    axios.put('http://localhost:4000/user/updateInfo',{data,user:localStorage.getItem('currentUser')})
+    axios.put('https://tiktak-bapp.herokuapp.com/user/updateInfo',{data,user:localStorage.getItem('currentUser')})
          .then(res => res)
          .then(data =>{
           console.log(data.data)

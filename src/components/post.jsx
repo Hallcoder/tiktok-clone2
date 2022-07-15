@@ -38,7 +38,7 @@ function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,u
      }
     if(isLiked){
     setIsLiked(!isLiked)
-    axios.post('http://localhost:4000/post/like',{action:'dislike',post:postId,user:localStorage.getItem('currentUser')})
+    axios.post('https://tiktak-bapp.herokuapp.com/post/like',{action:'dislike',post:postId,user:localStorage.getItem('currentUser')})
     .then((res) => res)
     .then(data => {
       console.log(data)
@@ -47,7 +47,7 @@ function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,u
     console.log(Likes)
   }else if(!isLiked){
     setIsLiked(!isLiked)
-    axios.post('http://localhost:4000/post/like',{action:'like',post:postId,user:localStorage.getItem('currentUser')})
+    axios.post('https://tiktak-bapp.herokuapp.com/post/like',{action:'like',post:postId,user:localStorage.getItem('currentUser')})
     .then((res) => res)
     .then(data => console.log(data))
       setLikes(Likes + 1)

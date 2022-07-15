@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Account from './common/account';
 const Accounts = () => {
     const [accounts,setAccounts] = useState([]);
     useEffect(() =>{
-        axios.get('http://localhost:4000/accounts')
+        axios.get('https://tiktak-bapp.herokuapp.com/accounts')
              .then(res =>  res)
              .then(data =>{
              setAccounts(data.data.data)
