@@ -11,9 +11,9 @@ function SignUp({ Display, changePage }) {
   const[state,setState] = useState({visible:false})
   const[errors,setErrors] = useState({email:'',username:'',password:'',cpassword:{},year:'',month:'',day:''})
   const[account,setAccount] = useState({
-    email:'hallcoder25@gmail.com',
-    password:'!!!?!?123Abana',
-    cpassword:'!!!?!?123Abana',
+    email:'',
+    password:'',
+    cpassword:'',
     year:'2002',
     month:'April',
     username:'zesta',
