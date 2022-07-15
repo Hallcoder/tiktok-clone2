@@ -24,7 +24,6 @@ function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,u
     setComments(comments);
     if(likeArray.length !== 0 ){
       likeArray.map(like => {
-        console.log(likeArray)
         if(localStorage.getItem('currentUser') && like !== null && JSON.parse(like).username === JSON.parse(localStorage.getItem('currentUser')).username) {
           setIsLiked(true);
         }

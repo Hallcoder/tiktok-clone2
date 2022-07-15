@@ -11,10 +11,6 @@ function EditAccount({handleClose}) {
     username:'',
     bio:''
   });
-  let schema = Joi.object({
-    bio:Joi.string().max(80),
-    username:Joi.string().required()
-  })
   useEffect(() => {
     const {profilePicture,username} =  JSON.parse(localStorage.getItem("currentUser"));
     setimage(profilePicture);

@@ -57,7 +57,6 @@ function Login({ Display }) {
     password: Joi.string().min(6).max(15).required(),
   });
   const changePage = (page) => {
-    console.log("set page");
     setPage(page);
   };
   const validateProperty = (input) => {
