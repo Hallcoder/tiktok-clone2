@@ -51,7 +51,6 @@ function EditAccount({handleClose}) {
           console.log(data.data)
           localStorage.removeItem('currentUser')
           localStorage.setItem('currentUser',JSON.stringify(data.data.data));
-          
           window.location.reload()
         })
          .catch(err => console.log(err))

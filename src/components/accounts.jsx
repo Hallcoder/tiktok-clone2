@@ -8,14 +8,14 @@ const Accounts = () => {
         axios.get('http://localhost:4000/accounts')
              .then(res =>  res)
              .then(data =>{
-             setAccounts(data)
+             setAccounts(data.data.data)
              })
              .catch(err => console.error(err))
-    })
+    },[])
     return ( 
         <div className="border-b-2 mb-3">
        { accounts.map(account =>{
-        return <Account pic={account.profilePicture} name={account.username} followers={account.followers} />
+        return <Account pic={account.profilePicture} name={account.username} followers={account.followers.length} />
        })}
         </div>
      );

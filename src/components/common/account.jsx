@@ -7,7 +7,7 @@ const Account = ({name,followers,pic}) => {
         <img src={pic} className="w-2/12  rounded-full" alt="profilepic" />
         <div className="flex flex-col">
           <h3 className="font-bold">{name}</h3>
-          <p className="text-sm text-gray-400">{followers}</p>
+          <p className="text-xs text-red-600 ">{name === 'Zesta' ? '100M':followers} followers</p>
         </div>
       </div>
     </div>

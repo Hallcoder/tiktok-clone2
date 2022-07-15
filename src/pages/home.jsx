@@ -15,7 +15,6 @@ function Home() {
     display: "none",
   })
 const  handleDisplay = () => {
-    console.log("Hello");
     setStyles({
       display:"block",
     })
@@ -39,7 +38,7 @@ const handleDisplay2 = () => {
         <div className="sticky top-0 w-4/12">
         <SideBar  />
         </div>
-          <Posts />
+          <Posts open={handleLoading} close={handleDisplay2}/>
         </div>
         <div style={styles} className="border-2 h-screen w-full  items-center justify-center  fixed bg-black bg-opacity-40 top-0 left-0 p-96  shadow-xl shadow-black ">
           <Login Display={handleDisplay2} />

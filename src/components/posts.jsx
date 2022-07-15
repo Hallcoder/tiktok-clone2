@@ -6,7 +6,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
-function Posts() {
+function Posts({open,close}) {
   const [posts, setPosts] = useState([]);
    useEffect(() =>{
     axios.get('http://localhost:4000/post/posts')
@@ -30,6 +30,8 @@ function Posts() {
               likes={post.likes.length}
               likeArray={post.likes}
               comments={post.comments}
+              open={open}
+              close={close}
             />
           );
         })}
