@@ -16,7 +16,7 @@ function SignUp({ Display, changePage }) {
     cpassword:'',
     year:'2002',
     month:'April',
-    username:'zesta',
+    username:'',
     day:'18'
   })
   const schema = Joi.object({
