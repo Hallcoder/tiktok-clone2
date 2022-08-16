@@ -60,7 +60,7 @@ function NavBar({ onDisplay, onLoad }) {
               <div className="flex flex-col h-full  w-full">
                 <div className="h-1/6 flex flex-row hover:bg-gray-200 cursor-pointer justify-around items-center ">
                   <FontAwesomeIcon icon={faUserAlt} />
-                  <p className="w-9/12">View Profile</p>
+                  <p className="w-9/12"><NavLink to='/profile-page'>View Profile</NavLink></p>
                 </div>
                 <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around  items-center ">
                   <FontAwesomeIcon icon={faGear} />

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faEdit,faClose } from "@fortawesome/free-solid-svg-icons";
 // import { useEffect } from "react";
 // import Person from "../images/person1.jpg"
-import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 function ImageUpload({Display,changePage,image,setImage}) {
