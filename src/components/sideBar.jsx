@@ -10,7 +10,7 @@ import Discover from "./discover";
 class SideBar extends Component {
   render() {
     return (
-      <div className="w-full hidden lg:flex  text-sm flex-col sticky top-14 overflow-y-scroll">
+      <div className="w-full hidden sm:flex  text-sm flex-col sticky top-14 overflow-y-scroll">
         <div id="navigate" className="border-b-1 m-1 font-bold">
           <div className="w-full hover:bg-gray-100 rounded-10 items-center flex flex-row bg-gray h-14  tex font-sans text-red-400">
             <FontAwesomeIcon icon={faHomeUser} />

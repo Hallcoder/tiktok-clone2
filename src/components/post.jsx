@@ -71,7 +71,7 @@ function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,u
               <NavLink to="#" className="no-underline hover:underline ">
                 {user}
               </NavLink>
-              <div>
+              <div className="text-xs">
                 <NavLink to="#" className="no-underline hover:underline ">
                   #Live
                 </NavLink>
@@ -89,12 +89,12 @@ function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,u
                 </NavLink>
               </div>
             </h1>
-            <div className="flex flex-row items-center ">
+            <div className="flex flex-row text-xs items-center ">
               <FontAwesomeIcon icon={faMusic} />
               <h3>&nbsp;Millionaire -Mico The Best</h3>
             </div>
           </div>
-          <div id="video" className="flex full flex-row">
+          <div id="video" className="flex flex-col sm:flex-row full">
             <ReactPlayer
               url={video}
               style={{ height: "10vh", width: "80%" }}
@@ -104,7 +104,7 @@ function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,u
               controls
               autoPlay
             />
-            <div className="flex flex-col w-1/12 p-1 justify-end">
+            <div className="flex sm:flex-col  sm:w-1/12 p-1 sm:justify-end">
               <Like
                 classs={isLiked ? active : inactive}
                 likes={Likes}

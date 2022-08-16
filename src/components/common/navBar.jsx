@@ -30,13 +30,13 @@ function NavBar({ onDisplay, onLoad }) {
   setLogin(false);
     }
     return (
-      <div className="flex flex-row justify-around rounded-md bg-white shadow-md sticky top-0 items-center w-full mx-auto ">
-        <div className="w-2/12 ">
-          <img className="h-12 border-2 drop-shadow-md m-2 rounded-md w-9/12" src={logo} alt="logo" />
+      <div className="flex flex-row justify-around rounded-md bg-white shadow-md fixed top-0 items-center w-11/12 m-auto ">
+        <div className="sm:w-2/12 2/12">
+          <img className="h-12 border-2 drop-shadow-md m-2 rounded-md sm:w-9/12 w-8/12" src={logo} alt="logo" />
         </div>
-        <div className="w-4/12 h-12 p-2 flex flex-row items-center rounded-lg border-2">
+        <div className="sm:w-4/12 h-12 p-2 flex flex-row items-center rounded-lg border-2">
           <input
-            className="w-10/12 focus:outline-none  h-8 border-r-2"
+            className="sm:w-10/12 max-w-fit focus:outline-none  h-8 border-r-2"
             type="text"
             name="search"
             placeholder="Search for videos and accounts..."
@@ -44,16 +44,16 @@ function NavBar({ onDisplay, onLoad }) {
           />
           <FontAwesomeIcon className="ml-6" icon={faSearch} />
         </div>
-        <div className="w-2/12 h-12   flex flex-row  items-center">
-          <button className=" w-7/12 h-3/12 text-black border-2  rounded-md border-black h-10 ">
+        <div className="sm:w-2/12 h-12   flex flex-row  items-center">
+          <button className="sm:w-7/12 m-1 h-3/12 text-black border-2  rounded-md border-black h-10 ">
             <NavLink to="/upload">Upload</NavLink>
           </button>
           {isLoggedIn ? <div className=" flex flex-row w-4/12 ml-2 h-10 object-contain items-center">
-            <div className="peer h-12 ">
+            <div className="peer w-full h-12 ">
               <img
                 src={profilePicture}
                 alt="prof"
-                className=" h-full border-2  rounded-full"
+                className="w-full h-full border-2  rounded-full"
               />
             </div>
             <div className="hidden hover:flex absolute border-2 shadow-md w-3/12 h-56 top-14 right-14 bg-white rounded-lg peer-hover:flex">

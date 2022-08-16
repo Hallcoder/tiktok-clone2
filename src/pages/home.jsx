@@ -32,9 +32,9 @@ const handleDisplay2 = () => {
   })
 }
     return ( 
-        <div className="w-11/12 text-sm m-auto">
+        <div className="">
         <NavBar onDisplay={handleDisplay}  onLoad={handleLoading}/>
-        <div className="flex flex-row m-1 ">
+        <div className="flex flex-row m-1 mt-[6vh] ">
         <div className="w-3/12">
         <SideBar  />
         </div>
@@ -42,7 +42,7 @@ const handleDisplay2 = () => {
         <Posts open={handleLoading} close={handleDisplay2}/> 
         </div>
         </div>
-        <div style={styles} className="border-2 h-screen w-full  items-center justify-center  fixed bg-black bg-opacity-40 top-0 left-0 p-96  shadow-xl shadow-black ">
+        <div style={styles} className="h-full w-full flex flex-col z-[1] drop-shadow-md items-center justify-center  absolute bg-black bg-opacity-40 top-0 left-0 m-auto  shadow-xl shadow-black ">
           <Login Display={handleDisplay2} />
         </div>
         <div

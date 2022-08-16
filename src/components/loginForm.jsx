@@ -78,7 +78,7 @@ function Login({ Display }) {
   };
   if (page === "emailPage") {
     return (
-      <div className="w-4/12 border-2 h-5/6 flex flex-col justify-around ml-36 rounded-lg  fixed bg-white top-14   shadow-xl">
+      <div className="w-4/12 border-2 h-5/6 flex flex-col justify-around m-auto rounded-lg  bg-white  shadow-xl">
         <div className="w-10/12 ml-auto mr-auto flex justify-end">
           <FontAwesomeIcon
             className="font-bold font-sans text-2xl bg-gray-100 rounded-full p-4 h-6 w-6 hover:cursor-pointer"
