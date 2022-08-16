@@ -17,7 +17,7 @@ function Posts({open,close}) {
    },[]);
   if (posts.length !== 0) {
     return (
-      <div>
+      <div className="m-6 mb-12 w-full">
         {posts.map((post) => {
           const { content } = post;
           return (

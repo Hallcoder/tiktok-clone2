@@ -28,6 +28,7 @@ function ProfilePage() {
          .then(data =>{
             setVideos(data.data.data)
          })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
   const handleClose = () => {
    setStyles({display: 'none'});
@@ -51,7 +52,7 @@ function ProfilePage() {
       <div className="w-9/12 m-auto">
         <NavBar onLoad={handleLoading} />
       </div>
-      <div className='flex'>
+      <div className='flex text-xs'>
         <div className="h-screen w-3/12"><SideBar /></div>
         <div className="w-6/12  border-2 ml-[14em] border-red-5 mt-4 h-[80vh]">
           <div className="flex ml-12 mt-12">
@@ -75,7 +76,7 @@ function ProfilePage() {
             <p>0 following</p>
             <p>0 likes</p>
           </div>
-          <div className="ml-14 flex text-sm">
+          <div className="ml-14 flex text-xs">
           Bio: {(bio && <p>{bio}</p>) || (!bio &&<p>No bio yet.</p>)}
             
           </div>
