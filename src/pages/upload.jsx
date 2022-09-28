@@ -46,10 +46,10 @@ const [loadingStyle,setLoading]  = useState({
   }
   return (
     <>
-      <div className="w-10/12 m-auto mb-4 h-4">
+      <div className="w-10/12 text-sm m-auto mb-4 h-4">
         <NavBar onDisplay={handleDisplay} onLoad={()=>handleLoading()} />
       </div>
-    <div className="h-screen">
+    <div className="h-screen text-sm">
       <div className="h-5/6">
         <Form onLoad={handleLoading} styles={setStyles} IsData={setIsData}/>
       </div>

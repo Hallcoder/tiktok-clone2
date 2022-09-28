@@ -6,87 +6,32 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
-function Posts() {
+function Posts({open,close}) {
   const [posts, setPosts] = useState([]);
-  const [state,setState] = useState({
-    isLiked: false,
-    isShared: false,
-    isCommentedOn: false,
-    likes: 0,
-   })
-   const handleLike = (post) => {
-        let State = {...state};
-        console.log(state.isLiked)
-        State['isLiked'] = !state.isLiked;
-        setState(State);
-        console.log()
-        // eslint-disable-next-line react/no-direct-mutation-state
-        if (!state.isLiked) {
-          axios.post("http://localhost:4000/post/like", {
-            user: localStorage.getItem("currentUser"),
-            action: "like",
-            post
-          })
-          .then(res => res)
-          .then(data => console.log(data))
-         State.likes = State.likes + 1;
-          setState(State);
-        } else {
-          axios.post("http://localhost:4000/post/like", {
-            user: localStorage.getItem("currentUser"),
-            action: "dislike",
-            post
-          })
-          .then(res => res)
-          .then(data => console.log(data))
-         State.likes = State.likes -1;
-          setState(State);
-        }
-      };
-    const  handleShare = () => {
-        setState(state.isShared + 1);
-      };
-    const  handleComment = () => {
-        setState(state.isCommentedOn - 1);
-      };
-    const setLike = () => {
-      let State = {...state};
-      State.isLiked = true;
-      State.likes += 1;
-      // setState(State);
-    }
-    // useEffect(() => {
-   
-    // },[posts])
-  useEffect(() => {
-    posts.map(post => {
-      if(post.likes.filter(like => like.email === localStorage.getItem('currentUser').email).email === localStorage.getItem('currentUser').email) {
-        axios.post('http://localhost:4000/post/edit',{isLikedByCurrentUser:true})
-        window.location.reload();
-      }
-    })
-      axios
-      .get("http://localhost:4000/post/posts", {}, { withCredentials: true })
-      .then((response) => {
-        setPosts(response.data.data);
-      });
-  },[]);
+   useEffect(() =>{
+    axios.get('https://tiktak-bapp.herokuapp.com/post/posts')
+      .then((response) =>response)
+      .then(data => {
+      setPosts(data.data.data);
+      })
+   },[]);
   if (posts.length !== 0) {
     return (
-      <div>
+      <div className="m-6 mb-12 w-full">
         {posts.map((post) => {
           const { content } = post;
-          console.log(post.isLikedByCurrentUser)
           return (
             <Post
+              key={post._id}
+              postId={post._id}
               profilePicture={post.uploadedBy.profilePicture}
               user={post.uploadedBy.username}
               video={content.secure_url}
               likes={post.likes.length}
-              isLiked={!post.isLikedByCurrentUser}
-              onLike={() => handleLike(post)}
-              onComment={() => handleComment(post)}
-              onShare={() => handleShare(post)}
+              likeArray={post.likes}
+              comments={post.comments}
+              open={open}
+              close={close}
             />
           );
         })}
