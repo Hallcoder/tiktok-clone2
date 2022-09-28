@@ -3,7 +3,7 @@ import Post from "./post";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import Loader from './common/loader.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 function Posts({open,close}) {
@@ -46,7 +46,8 @@ function Posts({open,close}) {
   } else{
     return (
       <div className="flex w-9/12 justify-center mt-[25%]  h-12">
-        <p>No videos to show <NavLink to="/upload" className='underline font-bold text-red-500'>Upload One</NavLink></p>
+         <div className="w-12 m-auto h-12 rounded-full border-b-4 border-t-4 border-red-600 text-gray-500 animate-spin ">
+          </div>
       </div>
     );
   }

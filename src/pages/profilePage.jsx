@@ -48,10 +48,8 @@ function ProfilePage() {
       localStorage.getItem("currentUser")
     )
       return (
-<div className="flex flex-col">
-      <div className="w-9/12 m-auto">
-        <NavBar onLoad={handleLoading} />
-      </div>
+<div className="flex flex-col mt-24">
+           <NavBar onLoad={handleLoading} />
       <div className='flex text-xs'>
         <div className="h-screen w-3/12"><SideBar /></div>
         <div className="w-6/12  border-2 ml-[14em] border-red-5 mt-4 h-[80vh]">

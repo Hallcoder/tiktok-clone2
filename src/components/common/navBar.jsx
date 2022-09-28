@@ -32,7 +32,7 @@ function NavBar({ onDisplay, onLoad }) {
     return (
       <div className="flex flex-row justify-around rounded-md bg-white shadow-md fixed top-0 items-center w-11/12 m-auto ">
         <div className="sm:w-2/12 2/12">
-          <img className="h-12 border-2 drop-shadow-md m-2 rounded-md sm:w-9/12 w-8/12" src={logo} alt="logo" />
+        <NavLink to='/'><img className="h-12 border-2 drop-shadow-md m-2 rounded-md sm:w-9/12 w-8/12" src={logo} alt="logo" /></NavLink>
         </div>
         <div className="sm:w-4/12 h-12 p-2 flex flex-row items-center rounded-lg border-2">
           <input
