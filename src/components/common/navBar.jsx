@@ -30,7 +30,7 @@ function NavBar({ onDisplay, onLoad }) {
   setLogin(false);
     }
     return (
-      <div className="flex flex-row justify-around rounded-md bg-white shadow-md fixed top-0 items-center w-11/12 m-auto ">
+      <div className="flex flex-row justify-around z-[1] rounded-md bg-white shadow-md fixed left-[5%] top-0 items-center w-11/12 m-auto ">
         <div className="sm:w-2/12 2/12">
         <NavLink to='/'><img className="h-12 border-2 drop-shadow-md m-2 rounded-md sm:w-9/12 w-8/12" src={logo} alt="logo" /></NavLink>
         </div>
@@ -81,6 +81,10 @@ function NavBar({ onDisplay, onLoad }) {
                 <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ">
                   <FontAwesomeIcon icon={faDoorOpen} />
                   <p className="w-9/12" onClick={logOut}>Log out</p>
+                </div>
+                <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ">
+                  <FontAwesomeIcon icon={faDoorOpen} />
+                  <p className="w-9/12" onClick={logOut}>Dark Mode</p>
                 </div>
               </div>
             </div>

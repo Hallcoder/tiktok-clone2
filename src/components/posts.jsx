@@ -3,16 +3,18 @@ import Post from "./post";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import Loader from './common/loader.jsx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
 function Posts({open,close}) {
   const [posts, setPosts] = useState([]);
+  const [Error,setError] = useState({});
    useEffect(() =>{
     axios.get('https://tiktak-bapp.herokuapp.com/post/posts')
       .then((response) =>response)
       .then(data => {
       setPosts(data.data.data);
+      }).catch(err => {
+   setError(err);
       })
    },[]);
   if (posts.length !== 0) {
@@ -44,12 +46,15 @@ function Posts({open,close}) {
       </div>
     );
   } else{
-    return (
+   
+    return  Object.values(Error).length === 0 ?  (
       <div className="flex w-9/12 justify-center mt-[25%]  h-12">
          <div className="w-12 m-auto h-12 rounded-full border-b-4 border-t-4 border-red-600 text-gray-500 animate-spin ">
           </div>
       </div>
-    );
+    ): <div>
+{Error.message}
+    </div>;
   }
 }
 

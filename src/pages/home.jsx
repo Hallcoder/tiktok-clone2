@@ -5,6 +5,7 @@ import "../css/home.css";
 import NavBar from './../components/common/navBar';
 import Login from '../components/loginForm';
 import Loader from '../components/common/loader';
+import ImageTest from '../components/imageTest';
 
 function Home() {
   const [styles, setStyles] = useState({
@@ -34,6 +35,7 @@ const handleDisplay2 = () => {
     return ( 
         <div className="">
         <NavBar onDisplay={handleDisplay}  onLoad={handleLoading}/>
+        <ImageTest />
         <div className="flex flex-row m-1 mt-[6vh] ">
         <div className="w-3/12">
         <SideBar  />

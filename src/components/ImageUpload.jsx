@@ -7,15 +7,6 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 function ImageUpload({Display,changePage,image,setImage}) {
   const navigate =useNavigate()
-  // const [image, setimage] = useState();
-  // const setImage = (e) => {
-  //   let file = e.target.files[0];
-  //   const reader  = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onloadend = () => {
-  //       setimage(reader.result); 
-  //   }
-  // };
   const submit = async(e)=>{
     // console.log(e.target.innerText);
     e.target.innerHTML =`<button className="rounded-full border-l-2 animate-spin">
