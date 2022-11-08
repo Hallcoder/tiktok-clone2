@@ -81,7 +81,7 @@ function Login({ Display }) {
       <div className="w-4/12 border-2 h-5/6 flex flex-col justify-around m-auto rounded-lg  bg-white  shadow-xl">
         <div className="w-10/12 ml-auto mr-auto flex justify-end">
           <FontAwesomeIcon
-          id='login-close-test-id'
+            data-testid='login-close-test-id'
             className="font-bold font-sans text-2xl bg-gray-100 rounded-full p-4 h-6 w-6 hover:cursor-pointer"
             icon={faClose}
             onClick={Display}

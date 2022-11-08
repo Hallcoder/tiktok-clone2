@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "./logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,9 +12,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useState , useEffect } from "react";
+import { ThemeModeContext } from "../../ThemeMode";
 function NavBar({ onDisplay, onLoad }) {
   const [isLoggedIn,setLogin] = useState(false);
   const [profilePicture,setProfile] = useState('');
+  const {setThemeMode} = useContext(ThemeModeContext);
   useEffect(()=>{
     if (JSON.parse(localStorage.getItem("currentUser"))) {
       setLogin(true);
@@ -24,6 +26,9 @@ function NavBar({ onDisplay, onLoad }) {
       setProfile(profilePicture);
     }
   },[])
+  const changeMode = () => {
+    setThemeMode('grey')
+  }
   const logOut  = () =>{
   onLoad("Logging out...");
   localStorage.removeItem("currentUser");
@@ -84,7 +89,7 @@ function NavBar({ onDisplay, onLoad }) {
                 </div>
                 <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ">
                   <FontAwesomeIcon icon={faDoorOpen} />
-                  <p className="w-9/12" onClick={logOut}>Dark Mode</p>
+                  <p className="w-9/12" onClick={changeMode}>Dark Mode</p>
                 </div>
               </div>
             </div>
