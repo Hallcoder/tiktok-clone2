@@ -12,11 +12,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useState , useEffect } from "react";
-import { ThemeModeContext } from "../../ThemeMode";
+import ThemeModeContext  from "../../ThemeMode";
 function NavBar({ onDisplay, onLoad }) {
   const [isLoggedIn,setLogin] = useState(false);
   const [profilePicture,setProfile] = useState('');
-  const {setThemeMode} = useContext(ThemeModeContext);
+  const [mode,setMode] = useContext(ThemeModeContext);
   useEffect(()=>{
     if (JSON.parse(localStorage.getItem("currentUser"))) {
       setLogin(true);
@@ -27,7 +27,8 @@ function NavBar({ onDisplay, onLoad }) {
     }
   },[])
   const changeMode = () => {
-    setThemeMode('grey')
+    console.log(!mode);
+    setMode(!mode);
   }
   const logOut  = () =>{
   onLoad("Logging out...");
@@ -61,7 +62,7 @@ function NavBar({ onDisplay, onLoad }) {
                 className="w-full h-full border-2  rounded-full"
               />
             </div>
-            <div className="hidden hover:flex absolute border-2 shadow-md w-3/12 h-56 top-14 right-14 bg-white rounded-lg peer-hover:flex">
+            <div className="hidden hover:flex absolute border-2 shadow-md w-3/12 h-56 top-14 right-14  rounded-lg peer-hover:flex">
               <div className="flex flex-col h-full  w-full">
                 <div className="h-1/6 flex flex-row hover:bg-gray-200 cursor-pointer justify-around items-center ">
                   <FontAwesomeIcon icon={faUserAlt} />

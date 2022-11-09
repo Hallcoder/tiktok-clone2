@@ -5,14 +5,14 @@ import "../css/home.css";
 import NavBar from './../components/common/navBar';
 import Login from '../components/loginForm';
 import Loader from '../components/common/loader';
-import { ThemeModeContext } from '../ThemeMode';
+import  ThemeModeContext  from '../ThemeMode';
 
 function Home() {
   const [styles, setStyles] = useState({
     display:"none",
     border:"2px solid red"
   });
-  const mode = useContext(ThemeModeContext);
+  const [mode,setMode] = useContext(ThemeModeContext);
   console.log(mode);
   const [loadingStyle,setLoading]  = useState({
     display: "none",
@@ -35,7 +35,7 @@ const handleDisplay2 = () => {
   })
 }
     return ( 
-        <div className="">
+        <div className={mode ? "bg-black text-white":""}>
         <NavBar onDisplay={handleDisplay}  onLoad={handleLoading}/>
         <div className="flex flex-row m-1 mt-[6vh] ">
         <div className="w-3/12">

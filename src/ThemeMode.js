@@ -1,6 +1,3 @@
-import {createContext} from 'react';
-
-export let ThemeModeContext = createContext({
-    ThemeMode:'dark',
-    setThemeMode:(newMode) => {}
-});
+import { createContext } from "react";
+const ThemeModeContext = createContext();
+export default ThemeModeContext;
