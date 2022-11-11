@@ -36,7 +36,7 @@ function NavBar({ onDisplay, onLoad }) {
   setLogin(false);
     }
     return (
-      <div className="flex flex-row justify-around z-[1] rounded-md bg-white shadow-md fixed left-[5%] top-0 items-center w-11/12 m-auto ">
+      <div className={`flex flex-row justify-around z-[1] rounded-md  shadow-md fixed left-[5%] top-0 items-center w-11/12 m-auto`}>
         <div className="sm:w-2/12 2/12">
         <NavLink to='/'><img className="h-12 border-2 drop-shadow-md m-2 rounded-md sm:w-9/12 w-8/12" src={logo} alt="logo" /></NavLink>
         </div>

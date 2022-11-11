@@ -12,6 +12,7 @@ function Home() {
     display:"none",
     border:"2px solid red"
   });
+  // eslint-disable-next-line no-unused-vars
   const [mode,setMode] = useContext(ThemeModeContext);
   console.log(mode);
   const [loadingStyle,setLoading]  = useState({
@@ -35,7 +36,7 @@ const handleDisplay2 = () => {
   })
 }
     return ( 
-        <div className={mode ? "bg-black text-white":""}>
+        <div className={mode ? "bg-black text-white":"border-red-500"}>
         <NavBar onDisplay={handleDisplay}  onLoad={handleLoading}/>
         <div className="flex flex-row m-1 mt-[6vh] ">
         <div className="w-3/12">
