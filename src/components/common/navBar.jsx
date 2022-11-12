@@ -13,6 +13,7 @@ import {
 import { NavLink } from "react-router-dom";
 import { useState , useEffect } from "react";
 import ThemeModeContext  from "../../ThemeMode";
+import { ToggleButton } from "@mui/material";
 function NavBar({ onDisplay, onLoad }) {
   const [isLoggedIn,setLogin] = useState(false);
   const [profilePicture,setProfile] = useState('');
@@ -36,25 +37,25 @@ function NavBar({ onDisplay, onLoad }) {
   setLogin(false);
     }
     return (
-      <div className={`flex flex-row justify-around z-[1] rounded-md  shadow-md fixed left-[5%] top-0 items-center w-11/12 m-auto`}>
+      <div className={`flex flex-row justify-around z-[1] rounded-md ${mode ? "bg-black border-b border-black":"bg-white"} shadow-md fixed left-[5%] top-0 items-center w-11/12 m-auto`}>
         <div className="sm:w-2/12 2/12">
         <NavLink to='/'><img className="h-12 border-2 drop-shadow-md m-2 rounded-md sm:w-9/12 w-8/12" src={logo} alt="logo" /></NavLink>
         </div>
         <div className="sm:w-4/12 h-12 p-2 flex flex-row items-center rounded-lg border-2">
           <input
-            className="sm:w-10/12 max-w-fit focus:outline-none  h-8 border-r-2"
+            className={`w-full ${mode ? "bg-black text-white":""} focus:outline-none  h-8 border-r-2`}
             type="text"
             name="search"
             placeholder="Search for videos and accounts..."
             id=""
           />
-          <FontAwesomeIcon className="ml-6" icon={faSearch} />
+          <FontAwesomeIcon className="ml-6 mr-6" icon={faSearch} />
         </div>
         <div className="sm:w-2/12 h-12   flex flex-row  items-center">
-          <button className="sm:w-7/12 m-1 h-3/12 text-black border-2  rounded-md border-black h-10 ">
+          <button className={`sm:w-7/12 m-1 h-3/12 ${mode ? "bg-black text-white border-white":"bg-white text-black "} border-2  rounded-md border-black h-10 `}>
             <NavLink to="/upload">Upload</NavLink>
           </button>
-          {isLoggedIn ? <div className=" flex flex-row w-4/12 ml-2 h-10 object-contain items-center">
+          {isLoggedIn ? <div className="flex flex-row w-4/12 ml-2 h-10 object-contain items-center">
             <div className="peer w-full h-12 ">
               <img
                 src={profilePicture}
@@ -62,34 +63,34 @@ function NavBar({ onDisplay, onLoad }) {
                 className="w-full h-full border-2  rounded-full"
               />
             </div>
-            <div className="hidden hover:flex absolute border-2 shadow-md w-3/12 h-56 top-14 right-14  rounded-lg peer-hover:flex">
+            <div className={` ${mode ? "bg-black":"bg-white"} hidden hover:flex absolute border-2 shadow-md w-3/12 h-56 top-14 right-14  rounded-lg peer-hover:flex`}>
               <div className="flex flex-col h-full  w-full">
-                <div className="h-1/6 flex flex-row hover:bg-gray-200 cursor-pointer justify-around items-center ">
+                <div className={`h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ${mode ? "hover:bg-white hover:text-black":"hover:bg-black hover:text-white"}`}>
                   <FontAwesomeIcon icon={faUserAlt} />
                   <p className="w-9/12"><NavLink to='/profile-page'>View Profile</NavLink></p>
                 </div>
-                <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around  items-center ">
+                <div className={`h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ${mode ? "hover:bg-white hover:text-black":"hover:bg-black hover:text-white"}`}>
                   <FontAwesomeIcon icon={faGear} />
                   <p className="w-9/12">Settings</p>
                 </div>
-                <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ">
+                <div className={`h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ${mode ? "hover:bg-white hover:text-black":"hover:bg-black hover:text-white"}`}>
                   <FontAwesomeIcon icon={faBookAtlas} />
                   <p className="w-9/12">English</p>
                 </div>
-                <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ">
+                <div className={`h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ${mode ? "hover:bg-white hover:text-black":"hover:bg-black hover:text-white"}`}>
                   <FontAwesomeIcon icon={faQuestion} /> 
                   <p className="w-9/12">Feedback and Help</p>
                 </div>
-                <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ">
+                <div className={`h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ${mode ? "hover:bg-white hover:text-black":"hover:bg-black hover:text-white"}`}>
                   <FontAwesomeIcon icon={faKeyboard} />
                   <p className="w-9/12"> Keyboard Shortcuts</p>
                 </div>
-                <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ">
+                <div className={`h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ${mode ? "hover:bg-white hover:text-black":"hover:bg-black hover:text-white"}`}>
                   <FontAwesomeIcon icon={faDoorOpen} />
                   <p className="w-9/12" onClick={logOut}>Log out</p>
                 </div>
-                <div className="h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ">
-                  <FontAwesomeIcon icon={faDoorOpen} />
+                <div className={`h-1/6 hover:bg-gray-200 cursor-pointer flex flex-row justify-around items-center ${mode ? "hover:bg-white hover:text-black":"hover:bg-black hover:text-white"}`}>
+                  <ToggleButton />
                   <p className="w-9/12" onClick={changeMode}>Dark Mode</p>
                 </div>
               </div>

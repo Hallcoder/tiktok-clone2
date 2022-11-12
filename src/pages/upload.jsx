@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext} from "react";
 import NavBar from "../components/common/navBar";
 import Form from "../components/form";
 import Login from "./../components/loginForm";
+import ThemeModeContext from '../ThemeMode'
 import Loader from "../components/common/loader";
 function Upload() {
   const [styles, setStyles] = useState({
@@ -9,6 +10,7 @@ function Upload() {
     border: "2px solid red",
   });
 const [isDataHere,setIsData] = useState(false);
+const [mode,setMode] = useContext(ThemeModeContext);
 const [message,setMessage] = useState('uploading...')
 const [loadingStyle,setLoading]  = useState({
   display: "none",
@@ -24,7 +26,8 @@ const [loadingStyle,setLoading]  = useState({
     });
   };
   useEffect(()=>{
-    handleLoading()
+    handleLoading();
+    console.log(mode)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[isDataHere])
   const handleLoading = (message)=>{
@@ -45,8 +48,8 @@ const [loadingStyle,setLoading]  = useState({
     }
   }
   return (
-    <>
-      <div className="w-10/12 text-sm m-auto mb-4 h-4">
+    <div className={`${mode ? "bg-black text-white":"bg-white text-black"}`}>
+      <div className={`w-10/12 text-sm m-auto mb-4 h-4`}>
         <NavBar onDisplay={handleDisplay} onLoad={()=>handleLoading()} />
       </div>
     <div className="h-screen text-sm">
@@ -66,7 +69,7 @@ const [loadingStyle,setLoading]  = useState({
         <Loader message={message}  />
       </div>
     </div>
-    </>
+    </div>
     
   );
 }

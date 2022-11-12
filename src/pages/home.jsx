@@ -36,7 +36,7 @@ const handleDisplay2 = () => {
   })
 }
     return ( 
-        <div className={mode ? "bg-black text-white":"border-red-500"}>
+        <div className={mode ? "border border-black bg-black text-white":"border-red-500"}>
         <NavBar onDisplay={handleDisplay}  onLoad={handleLoading}/>
         <div className="flex flex-row m-1 mt-[6vh] ">
         <div className="w-3/12">
