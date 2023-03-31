@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TbEdit } from "react-icons/tb";
-import Joi from 'joi';
+import {apiURL} from "../utils/constants"
 import axios from "axios";
 import TextField from '@mui/material/TextField';
 function EditAccount({handleClose}) {
@@ -41,7 +41,7 @@ function EditAccount({handleClose}) {
         bio:account.bio
     }
     console.log(data);
-    axios.put('https://tiktak-bapp.herokuapp.com/user/updateInfo',{data,user:localStorage.getItem('currentUser')})
+    axios.put(`${apiURL}/user/updateInfo`,{data,user:localStorage.getItem('currentUser')})
          .then(res => res)
          .then(data =>{
           console.log(data.data)

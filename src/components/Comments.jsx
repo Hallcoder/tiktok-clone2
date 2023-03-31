@@ -1,6 +1,7 @@
 import  Comment  from './Comment';
 import axios from 'axios';
 import React, { useState } from 'react';
+import {apiURL} from "../utils/constants"
 import { useNavigate } from 'react-router-dom';
 function Comments({comments,setComments,post,style}) {
     const [comment,setComment] = useState('');
@@ -12,7 +13,7 @@ function Comments({comments,setComments,post,style}) {
         return
        }
        e.preventDefault();
-       axios.post('https://tiktak-bapp.herokuapp.com/post/comment',{comment,post,user:localStorage.getItem('currentUser') })
+       axios.post(`${apiURL}/post/comment`,{comment,post,user:localStorage.getItem('currentUser') })
             .then(res => res)
             .then(data => {
                 let comms = [...comments]

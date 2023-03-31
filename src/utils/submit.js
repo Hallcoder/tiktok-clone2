@@ -1,12 +1,12 @@
 import axios from "axios";
-const api = axios.create({ baseUrl: "https://tiktak-bapp.herokuapp.com/" });
+import { apiURL } from "./constants";
+const api = axios.create({ baseUrl: `${apiURL}/` });
  async function Submit(data,changePage) {
   await api
-    .post("https://tiktak-bapp.herokuapp.com/user/signup", data)
+    .post(`${apiURL}/user/signup`, data)
     .then((res) => res)
     .then((data) => {
       console.log(data.data.data);
-      // changePage('imageUpload')
       changePage('login')
     })
     .catch((err) => {

@@ -7,6 +7,7 @@ import axios from "axios";
 import EditAccount from "../components/EditAccount";
 import { useNavigate } from "react-router-dom";
 import ThemeModeContext from "../ThemeMode";
+import { apiURL } from "../utils/constants";
 function ProfilePage() {
   let navigate = useNavigate();
   const [styles, setStyles] = useState({ display: "none" });
@@ -25,7 +26,7 @@ function ProfilePage() {
       JSON.parse(localStorage.getItem("currentUser")).username
     } (${JSON.parse(localStorage.getItem("currentUser")).email})`;
     axios
-      .get("https://tiktak-bapp.herokuapp.com//post/posts")
+      .get(`${apiURL}/post/posts`)
       .then(response => response)
       .then(data => {
         setVideos(data.data.data);

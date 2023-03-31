@@ -1,19 +1,17 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faEdit,faClose } from "@fortawesome/free-solid-svg-icons";
-// import { useEffect } from "react";
-// import Person from "../images/person1.jpg"
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { apiURL } from "../utils/constants";
 function ImageUpload({Display,changePage,image,setImage}) {
   const navigate =useNavigate()
   const submit = async(e)=>{
-    // console.log(e.target.innerText);
     e.target.innerHTML =`<button className="rounded-full border-l-2 animate-spin">
     Uploading...
  </button>`;
-    let api = axios.create({ baseUrl:'http://localhost:4000'});
-    await api.post('http://localhost:4000/user/profilePicture',{image:{file:image}},{withCredentials:true})
+    let api = axios.create({ baseUrl:`${apiURL}`});
+    await api.post(`${apiURL}/user/profilePicture`,{image:{file:image}},{withCredentials:true})
              .then(res=>res)
              .then(data =>{
                 console.log(data);

@@ -5,11 +5,12 @@ import { useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
+import { apiURL } from "../utils/constants";
 function Posts({open,close}) {
   const [posts, setPosts] = useState([]);
   const [Error,setError] = useState({});
    useEffect(() =>{
-    axios.get('https://tiktak-bapp.herokuapp.com/post/posts')
+    axios.get(`${apiURL}/post/posts`)
       .then((response) =>response)
       .then(data => {
       setPosts(data.data.data);

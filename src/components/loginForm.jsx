@@ -7,6 +7,7 @@ import SignUp from "./signup";
 import Login2 from "./login2";
 import ImageUpload from "./ImageUpload";
 import axios from "axios";
+import { apiURL } from "../utils/constants.js";
 function Login({ Display }) {
   const [image, setimage] = useState();
   const setImage = (e) => {
@@ -32,7 +33,7 @@ function Login({ Display }) {
       password: account.password,
     };
     await axios
-      .post("https://tiktak-bapp.herokuapp.com/user/login", data, { withCredentials: true })
+      .post(`${apiURL}/user/login`, data, { withCredentials: true })
       .then((res) => res)
       .then((data) => {
         localStorage.setItem("currentUser", JSON.stringify(data.data.data));

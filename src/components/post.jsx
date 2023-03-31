@@ -9,6 +9,7 @@ import axios from "axios";
 import Comment from "./common/comment";
 import Share from "./common/share";
 import Comments from "./Comments";
+import { apiURL } from "../utils/constants";
 function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,user,isShared,isCommentedOn,onShare }){
   const [Likes,setLikes] = useState(likes);
   const [Comms,setComments] = useState([])
@@ -37,7 +38,7 @@ function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,u
      }
     if(isLiked){
     setIsLiked(!isLiked)
-    axios.post('https://tiktak-bapp.herokuapp.com/post/like',{action:'dislike',post:postId,user:localStorage.getItem('currentUser')})
+    axios.post(`${apiURL}/post/like`,{action:'dislike',post:postId,user:localStorage.getItem('currentUser')})
     .then((res) => res)
     .then(data => {
       console.log(data)
@@ -46,7 +47,7 @@ function Post({postId,open,close,profilePicture,likeArray,comments,likes,video,u
     console.log(Likes)
   }else if(!isLiked){
     setIsLiked(!isLiked)
-    axios.post('https://tiktak-bapp.herokuapp.com/post/like',{action:'like',post:postId,user:localStorage.getItem('currentUser')})
+    axios.post(`${apiURL}/post/like`,{action:'like',post:postId,user:localStorage.getItem('currentUser')})
     .then((res) => res)
     .then(data => console.log(data))
       setLikes(Likes + 1)

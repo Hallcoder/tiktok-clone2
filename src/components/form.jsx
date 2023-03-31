@@ -6,6 +6,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ErrorBadge from "./common/errorBadge";
 import SuccessBadge from "./common/successBage";
+import { apiURL } from "../utils/constants";
 function Form({ onLoad, IsData, styles }) {
   var [data, setData] = useState({
     caption: "",
@@ -21,7 +22,7 @@ function Form({ onLoad, IsData, styles }) {
   });
   const upload = async (e) => {
     e.preventDefault();
-    if (!localStorage.getItem("currentUser")) {
+    if (!localStorage.getItem("currentUser")){
       console.log('You are not loggedIn broo')
       styles({display:'block'})
       return;
@@ -34,7 +35,7 @@ function Form({ onLoad, IsData, styles }) {
     };
     onLoad("uploading...");
     await axios
-      .post("https://tiktak-bapp.herokuapp.com/post/upload", data, {
+      .post(`${apiURL}/post/upload`, data, {
         withCredentials: true,
       })
       .then((res) => res)
