@@ -40,3 +40,32 @@ Mine is a social app and it is well understandable that I needed to make several
 - It is simple and doesn't need configuration.
 - It is asynchronous which allowed me to implement the non-blocking style of programming.
 - It's learning curve, it is easy to learn basically you are able to use it at the first glance or touch I can say.
+
+
+## Backend
+The backend of this app wasn't as complicated as the frontend since the frontend usually always require the most amount of effort and time compared to the backend but it also came with its challenges. Here are the tools I used to build the backend of the app.
+
+### 1.Express JS
+Express JS is a NodeJS framework that helps in building RESTful APIs with little code possible and together with many other libraries I used I was able to build a full functioning backend for my app.
+
+#### Feautures of Express JS I used
+- **Routes handling** : I used the express router to handle routes in my app and respond to different endpoints in unique ways.
+- **Middleware** :  Middlewares are a great way to intercept request before they get to the endpoint handler and modify it or check to increase security and flexibility and I used middlewares to implement authorization basically.
+
+### 2.MongoDB
+MongoDB is the database I used which uses document based storage and I used it to store users, posts and other useful information in the application not forgetting to mention to implement the realations between this stored data.
+> Last but not least I used the **MVC** architecture where I had the model(Database) , View(well the frontend) and the Controllers which handled my backend requests.
+
+### 3.JWT
+I used **JWT** in authentication and authorization and it helped me build a user management system where a user could register and login to be allowed to do things like liking, commenting and uploading content on the platform.
+
+### 4.Cloudinary
+**Cloudinary** is a cloud storage service which helps you to store your website's assets and user content at a cheap and sometimes free cost. I used cloudinary to store profile pictures and user uploaded videos.
+
+## Most challenging features to implement
+
+1.**Authentication&Authorization** : Authentication along with authorization are one of the most challenging features that I had to implement since it requires thinking of every possible way to keep your app secure and not allowing unauthorized access to certain resources. And it also involves working with tokens which is not also something easy to do.
+<br />
+
+2. **Liking** : Implementing the liking feature was so frustrating since every algorithm I tried introduced a bug to a point I felt like giving up. But I eventually figured out a way to allow a user to like and change the appearance of the button if the current user likes the video and persist that even when he closes the app and comes back or does a page reload.<br />
+3. **Input Validation** : Validating user input is something vital in every application and I used the Joi library to validate user input but then it was a very daunting task since user are always unpredictable and you need to think of any possible input and validate each of them. And with this comes error handling in validation, registration and login.
