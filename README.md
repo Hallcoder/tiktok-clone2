@@ -69,3 +69,16 @@ I used **JWT** in authentication and authorization and it helped me build a user
 
 2.**Liking** : Implementing the liking feature was so frustrating since every algorithm I tried introduced a bug to a point I felt like giving up. But I eventually figured out a way to allow a user to like and change the appearance of the button if the current user likes the video and persist that even when he closes the app and comes back or does a page reload.<br />
 3.**Input Validation** : Validating user input is something vital in every application and I used the Joi library to validate user input but then it was a very daunting task since user are always unpredictable and you need to think of any possible input and validate each of them. And with this comes error handling in validation, registration and login.
+
+## What did I learn from this project
+This is the first project I had ever done in MERN stack and I still even don't remember how I convinced myself to work on it , It was challenging but I learn alot from the project , so much that it is almost everything. So with that said you can understand that the project had many challenges throughout building it and whenever I overcame a challenge it gave me momentum to continue and tackle another as well as learning something new from it. Some of those challenges I have mentioned above and let me talk about what the challenges taught me :)
+
+- **I gained a clear understanding of how the web works** : While I was trying to implement the user authentication and authorization module I learnt well how the web works and http requests as well as working with developer tools in the browser.
+
+- **Working with APIs** : apart from building APIs this project gave me a high experience with working with APIs where I worked with my own API and knew how to handle server errors and display that to the user and keep the server running.
+
+- **Error Handling** : In this project I learnt well error handling since the server could usually have different unexpected errors due to different causes like bad user input, load overloading etc..
+
+ - **Responsive Web Design** : This project is not yet well responsive but it left with the knowledge and the caution to think about responsive desing before hand in order to ease the furnishing later after.
+ 
+ - **Overall flow of developing an application** : Before building the app I always wondered how an app was built from scratch till the end but after building it I had a clear understanding of how an app is built and all the requirements which is now an experience I have.
